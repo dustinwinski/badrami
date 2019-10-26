@@ -1,8 +1,6 @@
 Websocket Server
 =======================
 
-[![CircleCI](https://circleci.com/gh/Pithikos/python-websocket-server/tree/master.svg?style=svg)](https://circleci.com/gh/Pithikos/python-websocket-server/tree/master)
-
 A minimal Websockets Server in Python with no external dependencies.
 
   * Python2 and Python3 support
@@ -18,13 +16,7 @@ websocket server for prototyping, testing or for making a GUI for your applicati
 Installation
 =======================
 
-You can use the project in three ways.
-
-  1. Copy/paste the *websocket_server.py* file in your project and use it directly
-  2. `pip install git+https://github.com/Pithikos/python-websocket-server` (latest code)
-  3. `pip install websocket-server` (might not be up-to-date)
-
-For coding details have a look at the [*server.py*](https://github.com/Pithikos/python-websocket-server/blob/master/server.py) example and the [API](https://github.com/Pithikos/python-websocket-server#api).
+Copy/paste the *websocket_server.py* file in your project and use it directly
 
 
 Usage
@@ -35,13 +27,6 @@ You can get a feel of how to use the websocket server by running
 
 Then just open `client.html` in your browser and you should be able to send and receive messages.
 
-
-Testing
-=======
-
-Run all tests
-
-    tox
 
 
 API
