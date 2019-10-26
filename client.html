@@ -1,6 +1,10 @@
 <html>
 <head>
   <title>Simple client</title>
+    
+  <style>
+  
+  </style>
 
 <style>
 #log{
@@ -25,7 +29,7 @@
       
       ws.onmessage = function(e) {
         // e.data contains received string.
-        output("onmessage: " + e.data);
+        output(e.data);
       };
       
       ws.onclose = function() {
@@ -43,7 +47,6 @@
       var input = document.getElementById("input");
       // You can send message to the Web Socket using ws.send.
       ws.send(input.value);
-      output("send: " + input.value);
       input.value = "";
       input.focus();
     }
@@ -53,20 +56,20 @@
     }
     
     function output(str) {
-      var log = document.getElementById("log");
-      var escaped = str.replace(/&/, "&amp;").replace(/</, "&lt;").
-        replace(/>/, "&gt;").replace(/"/, "&quot;"); // "
-      log.innerHTML = escaped + "<br>" + log.innerHTML;
+      var log = document.getElementById("chat_content");
+      var message = str;
+      log.innerHTML = message + "<br>" + log.innerHTML;
     }
 
   </script>
 </head>
 <body onload="init();">
+  <div id="chat_content"></div>
+
   <form onsubmit="onSubmit(); return false;">
     <input type="text" id="input">
     <input type="submit" value="Send">
-    <button onclick="onCloseClick(); return false;">close</button>
   </form>
-  <div id="log"></div>
+
 </body>
 </html>
