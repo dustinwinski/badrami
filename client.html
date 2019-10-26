@@ -7,7 +7,8 @@
   </style>
 
 <style>
-#chat_content,#input_body{
+
+#input_body{
   /* test  */
   position: fixed;
   left: 0;
@@ -64,7 +65,8 @@
     function output(str) {
       var log = document.getElementById("chat_content");
       var message = str;
-      log.innerHTML = message + "<br>" + log.innerHTML;
+
+      log.innerHTML+= "<br>" + message;
     }
 
   </script>
