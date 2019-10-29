@@ -1,102 +1,118 @@
 <html>
+
 <head>
-  <title>Simple client</title>
-    
+  <title>Badrami Client</title>
+
   <style>
-  
+
   </style>
 
-<style>
-#top_div {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 50%;
-    background-color:#009900;
-    text-align:center;
-}
+  <style>
+    #top_div {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 50%;
+      background-color: #009900;
+      text-align: center;
+    }
 
-#bottom_div {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color:#990000;
-    text-align:center;
-    color:#FFFFFF;
-}
-#chat_content{
+    #bottom_div {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: #990000;
+      text-align: center;
+      color: #FFFFFF;
+    }
 
-  position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 60px;
-    /* background-color:#009900; */
-    text-align:center;
-}
+    #chat_content {
 
-#input_body{
-  /* test  */
-  position: absolute;
-    /* top: 60px; */
-    right: 0;
-    left: 0;
-    bottom: 0;
-    /* background-color:#990000; */
-    text-align:center;
-    color:#FFFFFF;
-  
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 60px;
+      /* background-color:#009900; */
+      text-align: center;
+    }
 
-}
+    #input_body {
+      /* test  */
+      position: absolute;
+      /* top: 60px; */
+      right: 0;
+      left: 0;
+      bottom: 0;
+      /* background-color:#990000; */
+      text-align: center;
+      color: #FFFFFF;
 
-#input {
-    width: 90%;
-    padding: 12px;
-    border: 1px solid 
-    #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    resize: vertical;
-    margin-left: 10px;
-    margin-right: 10px;
-}
 
-</style>
+    }
+
+    #input {
+      width: 90%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      resize: vertical;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .text-success {
+      color:
+        white;
+      background-color:
+        green;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    .text-danger {
+      color:
+        white;
+      background-color:
+        red;
+      padding: 4px;
+      border-radius: 4px;
+    }
+  </style>
 
 
   <script type="text/javascript">
 
     var ws;
-    
+
     function init() {
 
       // Connect to Web Socket
       ws = new WebSocket("ws://localhost:9001/");
 
       // Set event handlers.
-      ws.onopen = function() {
-        output("onopen");
+      ws.onopen = function () {
+        output("<h1 class='text-success'>You are now connected!!</h1>");
       };
-      
-      ws.onmessage = function(e) {
+
+      ws.onmessage = function (e) {
         // e.data contains received string.
         output(e.data);
       };
-      
-      ws.onclose = function() {
-        output("onclose");
+
+      ws.onclose = function () {
+        output("Closing");
       };
 
-      ws.onerror = function(e) {
-        output("onerror");
-        console.log(e)
+      ws.onerror = function (e) {
+        output("<h1 class='text-danger'>Failed to establish connection!!</h1>");
       };
 
     }
-    
+
     function onSubmit() {
       var input = document.getElementById("input");
       // You can send message to the Web Socket using ws.send.
@@ -104,31 +120,33 @@
       input.value = "";
       input.focus();
     }
-    
+
     function onCloseClick() {
       ws.close();
     }
-    
+
     function output(str) {
       var log = document.getElementById("chat_content");
       var message = str;
 
-      log.innerHTML+= "<br>" + message;
+      log.innerHTML += "<br>" + message;
     }
 
   </script>
 </head>
+
 <body onload="init();">
-  
+
   <div id="chat_content"></div>
   <div id="input_body">
     <form onsubmit="onSubmit(); return false;">
       <input type="text" class="input_textbox" id="input">
     </form>
   </div>
-  
 
-  
+
+
 
 </body>
+
 </html>
