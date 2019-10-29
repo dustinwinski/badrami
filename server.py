@@ -3,7 +3,7 @@ import datetime
 from time import gmtime, strftime
 
 def getDate():
-	return str(datetime.datetime.now().strftime('%m-%d-%Y %H:%M:%S'))
+	return str(datetime.datetime.now().strftime('%m-%d-%Y %I:%M:%S %p'))
 
 # Called for every client connecting (after handshake)
 def new_client(client, server):
